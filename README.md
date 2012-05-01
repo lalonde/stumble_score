@@ -3,26 +3,10 @@ StumbleScore
 
 Google Keys
 ===========
+Please don't blow mine out...
+Signup at https://code.google.com/apis/console
+Click services and add Places API
 
-    AIzaSyANae0s1I9yJ-sdhy1ghFAg0j4B0Po3AA4
-
-    AIzaSyDR7kyOHOKmbWVXV77JH1riDFe3EL67ntY
-
-    AIzaSyC5gss4v7v1MUCu4RyEWWXigta_vitTwz8
-
-
-Exercises for The Ruby Workshop
--------------------------------
-
-# Setup
-
-1. Visit [github.com/therubyworkshop/stumble_score](http://github.com/therubyworkshop/stumble_score)
-2. Click [ZIP](https://github.com/therubyworkshop/stumble_score/zipball/master) to download project
-3. Unzip the file
-4. Rename the folder to `stumble_score` and move it where it'll be easy to find
-5. Open up your terminal
-6. `cd /path/to/stumble_score/`
-7. `gem install json_pure sinatra heroku rack-test`
 
 # Running the tests
 

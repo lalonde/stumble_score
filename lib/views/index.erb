@@ -1,0 +1,134 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <title>StumbleScore</title>
+  <meta name="description" content="Find your Bars and Ratings">
+
+  <!-- Mobile viewport optimization h5bp.com/ad -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+
+  <!-- iOS web app, delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"img/startup-tablet-landscape.png":"img/startup-tablet-portrait.png"}else{a=window.devicePixelRatio===2?"img/startup-retina.png":"img/startup.png"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script>
+  
+  <!-- The script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+  <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+
+<!-- add to home -->
+<script src="js/add2home.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bookmark_bubble.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/add2home.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+<!-- add to home -->
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+
+  <!-- more tags for your 'head' to consider h5bp.com/d/head-Tips -->
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+	
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+	<!-- Google Fonts -->
+</head>
+
+<body>
+
+  <div id="container" class="box_shadow">
+    <header>
+	<h1 class="box_shadow">Welcome to StumbleScore</h1>
+    </header>
+    <% if @address != nil %>
+    <div id="main" role="main">
+		<div>
+			Stumbling score around <%=@address%>
+		</div>
+		<div>
+			Bar count: <%=@location.bar_count%>
+		</div>
+		<div>
+			StumbleScore: <%=@location.score%>
+		</div>
+		<div>
+			Classified as: <%=@location.classification%>
+		</div>
+		<p>
+			Bars:
+		</p>
+		<ul>
+                  <% @location.bar_names.sort().each do |b| %>
+
+                  <li> <%=b%><br>
+                    <a target="new" href="http://maps.google.com/maps?q=<%=URI.escape(@bar_addresses[b])%>&hl=en"> <%=@bar_addresses[b]%> </a>
+                  </li> 
+                  <% end %>
+		</ul>
+	</div> <!-- /main -->	
+    <% end %>
+ <div id="form">
+   <% if @address == nil %>
+   Just add an address friend!
+   <% else %>
+   Enter another address
+   <% end %> 
+   <form method="GET" action=""><input name=address value=""><input type=submit></form>
+</div>
+    <footer>
+	<div class="colophon">
+		<ul>
+			<li><img class="twitpic" src="http://a0.twimg.com/profile_images/1239941644/profile_pic_reasonably_small.jpg" alt="mike pic">recoded by <a href="http://twitter.com/#!/mikelalonde" target="blank">Mike</a></li>
+			<li><img class="twitpic" src="http://a0.twimg.com/profile_images/1707415694/jpeg_reasonably_small.jpeg" alt="wes pic">styled by <a href="http://twitter.com/#!/wesleyterry" target="blank">Wes</a></li>
+			<li><img class="twitpic" src="http://a0.twimg.com/profile_images/66980996/Phillyrb_logo_reasonably_small.png" alt="ruby pic">based on the <a href="https://github.com/therubyworkshop/stumble_score" target="blank">ruby workshop: stumble score</a> by <a href="http://phillyrb.org/" target="blank">Philadelphia Ruby User Group</a></li>
+		</ul>	
+	</div>	
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/helper.js"></script>
+  <!-- end scripts-->
+
+
+  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+  <script>
+    var _gaq=[["_setAccount","UA-31300680-1"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+
+</body>
+</html>

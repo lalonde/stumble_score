@@ -11,7 +11,7 @@ class TestStumbleWeb < Test::Unit::TestCase
   def test_page_displays_usage_instructions_when_no_address_specified
     get "/"
     assert last_response.ok?, "Request failed!"
-    assert last_response.body.include?("address parameter"),
+    assert last_response.body.include?("Just add an address friend!"),
       "TODO display usage instructions on page when no address is specified. " \
       "(HINT: use the words \"address parameter\" to make this test pass."
   end

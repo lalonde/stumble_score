@@ -6,29 +6,50 @@ require "json"
 module StumbleScore
 
   class Location
-    GOOGLE_KEY    = "AIzaSyCTPREzeJUXKz4-aQOH-CbnNqtcl9DzDlA"
+    GOOGLE_KEY    = "AIzaSyDZ3HukggTQAWV6LTT_d4bqtZmj-DIekyE"
     RADIUS        = 2000 # (meters)
     CRITERIA      = URI.escape("bar|pub")
     MAGIC_NUMBER  = 20
 
     def initialize(address)
-      # TODO
+      @address=address
+      @bars=bars
+      @bar_addresses=bar_addresses
     end
 
     def bar_count
-      # TODO
+      @bars.count
     end
 
     def score
-      0
+      self.bar_count * 5.0
     end
 
     def classification
-      # TODO
+      case bar_count
+      when 0..5
+        return "Dry"        
+      when 6..10
+        return "Tipsy"
+      else
+        return "Sloppy"
+      end
     end
 
     def bar_names
-      # TODO
+      names = Array.new
+      @bars.each do |b|
+        names.push b["name"]
+      end
+      names
+    end
+
+    def bar_addresses
+      bar_addr = {}
+      @bars.each do |b|
+        bar_addr[b["name"]] = b["vicinity"]
+      end
+      bar_addr
     end
 
     def bars
