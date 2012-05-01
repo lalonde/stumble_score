@@ -64,6 +64,7 @@
 	<h1 class="box_shadow">Welcome to StumbleScore</h1>
     </header>
     <% if @address != nil %>
+    <% if @err == nil %>
     <div id="main" role="main">
 		<div>
 			Stumbling score around <%=@address%>
@@ -89,6 +90,9 @@
                   <% end %>
 		</ul>
 	</div> <!-- /main -->	
+    <% else %>
+    Please try again later.  An error occurred getting locations... Sorry using free api keys and free a service...
+    <% end %>
     <% end %>
  <div id="form">
    <% if @address == nil %>
