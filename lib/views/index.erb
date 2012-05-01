@@ -82,7 +82,7 @@
 			Bars:
 		</p>
 		<ul>
-                  <% @location.bar_names.sort().each do |b| %>
+                  <% @location.bar_names.each do |b| %>
 
                   <li> <%=b%><br>
                     <a target="new" href="http://maps.google.com/maps?q=<%=URI.escape(@bar_addresses[b])%>&hl=en"> <%=@bar_addresses[b]%> </a>
